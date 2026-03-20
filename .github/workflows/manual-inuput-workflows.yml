@@ -1,0 +1,18 @@
+name: Manual Input Workflow
+on:
+    workflow_dispatch:
+        inputs:
+            name:
+                description: 'Enter your name'
+                default: 'borase'
+                required: true
+            age:
+                description: 'Enter your age'
+                default: 35'
+                required: true
+jobs:
+    greet:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Greet the user
+              run: echo "Hello ${{inputs.name}}! Your age is ${{inputs.age}}"
