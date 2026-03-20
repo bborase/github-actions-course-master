@@ -12,7 +12,8 @@ jobs:
               run: docker build -t my-docker-image:latest -f 03-app-dotnet/Dockerfile 03-app-dotnet/
             - name: Run the Docker container    
               run: docker run -d -p 80:80 my-docker-image:latest
-            - name: Health check
+            - name: Wait and verify service
               run: |
-                HEALTHCHECK --interval=10s --timeout=3s --start-period=5s --retries=3 \
-                  CMD curl -f http://localhost:80/ || exit 1
+                sleep 2
+                curl http://localhost:80
+           
